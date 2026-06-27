@@ -704,7 +704,7 @@ heliBase = {
 	reactivateAllInserters = function(self)
 		for k, curInserter in pairs(self.deactivatedInserters) do
 			if curInserter.valid then
-				curInserter.active = true
+				curInserter.disabled_by_script = false
 			end
 		end
 
@@ -719,7 +719,7 @@ heliBase = {
 				table.remove(self.deactivatedInserters, i)
 
 			elseif getDistance(curInserter.position, self.baseEnt.position) > self.inserterScanRadius then
-				curInserter.active = true
+				curInserter.disabled_by_script = false
 				table.remove(self.deactivatedInserters, i)
 			end
 		end
@@ -735,8 +735,8 @@ heliBase = {
 		}
 
 		for k, curInserter in pairs(inserters) do
-			if curInserter.active then
-				curInserter.active = false
+			if not curInserter.disabled_by_script then
+				curInserter.disabled_by_script = true
 				table.insert(self.deactivatedInserters, curInserter)
 			end
 		end

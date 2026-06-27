@@ -9,7 +9,7 @@ function getHeliControllerIndexByOwner(p)
 end
 
 function getHeliControllerByOwner(p)
-	local i = getHeliControllerIndexByowner(p)
+	local i = getHeliControllerIndexByOwner(p)
 	if i then return storage.heliControllers[i] end
 end
 
